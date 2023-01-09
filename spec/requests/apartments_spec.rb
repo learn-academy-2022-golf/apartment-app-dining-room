@@ -21,7 +21,7 @@ RSpec.describe "Apartments", type: :request do
         get '/apartments'
         apartments = JSON.parse(response.body)
         expect(response).to have_http_status(200)
-        expect(apartment.length).to eq 1
+        expect(apartments.length).to eq 1
       end
     end
   end
