@@ -1,13 +1,13 @@
-import React from "react"
-import { Nav, NavItem } from "reactstrap"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { Nav, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
 
 const Navigation = ({
   logged_in,
   current_user,
   new_user_route,
   sign_in_route,
-  sign_out_route
+  sign_out_route,
 }) => {
   return (
     <>
@@ -38,9 +38,28 @@ const Navigation = ({
             </a>
           </NavItem>
         )}
+        <NavItem>
+          <NavLink to="/apartmentindex" className="nav-link">
+            All Apartments
+          </NavLink>
+        </NavItem>
+        {logged_in && (
+          <NavItem>
+            <NavLink to="/apartmentnew" className="nav-link">
+              Create an Apartment
+            </NavLink>
+          </NavItem>
+        )}
+        {logged_in && (
+          <NavItem>
+            <NavLink to="/apartmentshow" className="nav-link">
+              My Apartments
+            </NavLink>
+          </NavItem>
+        )}
       </Nav>
     </>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
