@@ -22,10 +22,10 @@ const Home = ({ logged_in, current_user, new_user_route, sign_in_route, sign_out
       </div>:
       <div>
       <h1>Welcome.</h1>
-      <p>You can browse for apartments or list your own.</p>
+      <p>You can browse for apartments or sign up for an account to list an apartment.</p>
 
       <a href={sign_in_route}><Button>Sign In </Button></a>
-      <a href={sign_out_route}><Button>Sign Up </Button></a>
+      <a href={new_user_route}><Button>Sign Up </Button></a>
       </div>
     } 
     </>
