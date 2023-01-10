@@ -24,5 +24,59 @@ RSpec.describe "Apartments", type: :request do
         expect(apartments.length).to eq 1
       end
     end
-  end
+    describe "POST /create" do
+      it "creates a new apartment" do
+        User.create(
+        email:'test@test.com', 
+        password:'123456789', 
+        password_confirmation:'123456789') 
+        user=User.first 
+        
+        apartment_params = {
+          street: "Candy Cane Ln.",
+          city:"Windy",
+          state:"FL",
+          manager:"Timmy Turner",
+          email:"Timmyg@aol.com", 
+          price:2000,
+          bedrooms:2, 
+          bathrooms:1, 
+          pets:"yes",
+          image:"https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fcdn.gobankingrates.com%2Fwp-content%2Fuploads%2F2019%2F07%2FBeautiful-luxury-home-exterior-iStock-1054759884.jpg",
+          user_id:user.id
+          }
+          post '/apartments', params:{apartment: apartment_params}
+          expect(response).to have_http_status(200)
+          apartment=Apartment.last
+          expect(apartment.street).to eq "Candy Cane Ln."
+          expect(Apartment.count).to eq 1
+          
+        end
+        it "checks for 404 error" do
+          User.create(
+          email:'test@test.com', 
+          password:'123456789', 
+          password_confirmation:'123456789') 
+          user=User.first 
+          
+          apartment_params = {
+            street: "",
+            city:"",
+            state:"",
+            manager:"",
+            email:"", 
+            price:2000,
+            bedrooms:2, 
+            bathrooms:1, 
+            pets:"yes",
+            image:"https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fcdn.gobankingrates.com%2Fwp-content%2Fuploads%2F2019%2F07%2FBeautiful-luxury-home-exterior-iStock-1054759884.jpg",
+            user_id:user.id
+            }
+            post '/apartments', params:{apartment: apartment_params}
+            expect(response).to have_http_status(422)
+           
+            
+          end
+      end
+    end
 
