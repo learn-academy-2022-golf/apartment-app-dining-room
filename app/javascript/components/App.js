@@ -11,22 +11,22 @@ import ApartmentShow from "./pages/ApartmentShow"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import mockApartments from "./mockApartments"
+import ProtectedApartmentIndex from "./pages/ProtectedApartmentIndex"
 
 const App = (props) => {
-  const [apartments, setApartments] = useState(mockApartments)
-//  console.log (apartments)
-//   useEffect(() => {
-//     readApartments()
-  // }, [])
+  const [apartments, setApartments] = useState()
+  useEffect(() => {
+    readApartments()
+  }, [])
 
-  // const readApartments = () => {
-  //   fetch("/apartments")
-  //     .then((response) => response.json())
-  //     .then((payload) => {
-  //       setApartments(payload)
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
+  const readApartments = () => {
+    fetch("/apartments")
+      .then((response) => response.json())
+      .then((payload) => {
+        setApartments(payload)
+      })
+      .catch((error) => console.log(error))
+  }
 
   return (
     <BrowserRouter>
@@ -34,6 +34,7 @@ const App = (props) => {
       <Routes>
         <Route exact path="/" element={<Home {...props}/>} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
+        <Route path="/myapartments" element={<ProtectedApartmentIndex apartments={apartments} user={props.current_user} /> } />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
