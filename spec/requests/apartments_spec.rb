@@ -1,5 +1,38 @@
 require "rails_helper"
 RSpec.describe "Apartments", type: :request do
+
+  current_user = User.first_or_create!(email: 'dean@example.com', password: 'password', password_confirmation: 'password')
+  let(:valid_attributes) do
+    {
+      "street"=> "Pine Island Ave.",
+          "city" => "Spectacular",
+          "state" => "CA",
+          "manager" =>"Garrett Graham",
+          "email" => "graham.g@aol.com", 
+          "price"=>"1M", 
+          "bedrooms"=>2, 
+          "bathrooms"=>1, 
+          "pets"=>"yes",
+          "image"=>"url" 
+         
+    }
+  end
+
+  let(:invalid_attributes) do
+    {
+      "street"=> "",
+          "city" => "",
+          "state" => "",
+          "manager" =>"",
+          "email" => "", 
+          "price"=>"", 
+          "bedrooms"=> 0,
+          "bathrooms"=> 0, 
+          "pets"=>"",
+          "image"=>""
+         
+    }
+  end
     describe "GET /index" do
       it "gets a list of apartments " do
       
@@ -77,6 +110,46 @@ RSpec.describe "Apartments", type: :request do
            
             
           end
+      end
+      describe 'PATCH /update' do
+        context 'with valid parameters' do
+          let(:new_attributes) do
+            {
+          "street" =>  "Pine Island Ave.",
+          "city" => "Spectacular",
+          "state" => "Wisconsin",
+          "manager" => "Garrett Graham",
+          "email" => "graham.g@aol.com", 
+          "price"=>"1M", 
+          "bedrooms"=>2, 
+          "bathrooms"=>1, 
+          "pets"=>"yes",
+          "image"=>"url" 
+        
+            }
+          end
+    
+          it 'updates the requested post' do
+            apartment = Apartment.new(valid_attributes)
+            apartment.user = current_user
+            apartment.save
+            patch apartment_url(apartment), params: { apartment: new_attributes }
+            apartment.reload
+            expect(response).to have_http_status(200)
+            expect(apartment.state).to eq 'Wisconsin'
+          end
+        end
+        context 'with invalid parameters' do
+          it "shows an invalid error message and can not update" do
+            apartment = Apartment.new(valid_attributes)
+            apartment.user = current_user
+            apartment.save
+            patch apartment_url(apartment), params: { apartment: invalid_attributes }
+            json = JSON.parse(response.body)
+            expect(json['city']).to include "can't be blank"
+            expect(response).to have_http_status(422)
+          end
+        end
       end
     end
 
