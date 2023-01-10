@@ -3,7 +3,7 @@ import {Form, FormGroup, Label, Input, Button} from "reactstrap"
 import { useNavigate } from "react-router-dom"
 
 
-const ApartmentNew = ({ createApartment }) => {
+const ApartmentNew = ({ createApartment, user }) => {
   const navigate = useNavigate()
   const [newApartment, setNewApartment] = useState({
     street: "",
@@ -16,7 +16,7 @@ const ApartmentNew = ({ createApartment }) => {
     bathrooms: "",
     pets: "",
     image: "",
-    user_id: 4
+    user_id: user.id
   })
   
   const handleChange = (e) => {

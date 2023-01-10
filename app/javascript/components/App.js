@@ -40,7 +40,7 @@ const App = (props) => {
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
         <Route path="/myapartments" element={<ProtectedApartmentIndex apartments={apartments} user={props.current_user} /> } />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
-        <Route path="/apartmentnew" element={<ApartmentNew createApartment={createApartment}/>} />
+        <Route path="/apartmentnew" element={<ApartmentNew createApartment={createApartment} user={props.current_user}/>} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
         <Route element={<NotFound />} />
       </Routes>
