@@ -151,5 +151,16 @@ RSpec.describe "Apartments", type: :request do
           end
         end
       end
+
+      describe 'DELETE /destroy' do
+        it 'destroys the requested post' do
+          apartment = Apartment.new(valid_attributes)
+          apartment.user = current_user
+          apartment.save
+          expect do
+            delete apartment_url(apartment)
+          end.to change(Apartment, :count).by(-1)
+        end
+      end
     end
 
