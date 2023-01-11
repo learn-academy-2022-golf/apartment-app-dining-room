@@ -45,6 +45,16 @@ const App = (props) => {
   const updateApartment = (apartment, id) => {
     console.log("Apartment:", apartment);
     console.log("id:", id);
+    fetch(`http://localhost:3000/apartments/${id}`, {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      method: "PATCH"
+    })
+    .then((response) => response.json())
+    .then(() => readApartments())
+    .catch((errors) => console.log("Apartment update errors:", errors)) 
   };
 
   const deleteApartment = (id) => {
