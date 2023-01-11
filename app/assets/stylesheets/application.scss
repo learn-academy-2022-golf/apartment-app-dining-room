@@ -14,3 +14,17 @@
  *= require_self
  */
 @import 'bootstrap';
+
+.card-index {
+  display: grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem; 
+  height: 100vh;
+  background-color: antiquewhite;
+}
+.card-index img{ height:200 px; 
+                 width:300 px; 
+                 object-fit: cover;
+                 padding:10px; 
+}

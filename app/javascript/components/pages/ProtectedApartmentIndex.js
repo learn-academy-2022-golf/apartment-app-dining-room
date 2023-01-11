@@ -8,7 +8,7 @@ const ProtectedApartmentIndex = ( {apartments, user,deleteApartment} ) => {
     deleteApartment(id)
   }
   return (
-    <div>
+    <div className='card-index'>
         {user && apartments?.filter(apartment => apartment.user_id === user.id).map(apartment => {
         return (
             <Card
