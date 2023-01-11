@@ -1,10 +1,9 @@
-import React, { useState } from "react"
-import {Form, FormGroup, Label, Input, Button} from "reactstrap"
-import { useNavigate } from "react-router-dom"
-
+import React, { useState } from "react";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 const ApartmentNew = ({ createApartment, user }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [newApartment, setNewApartment] = useState({
     street: "",
     city: "",
@@ -16,37 +15,33 @@ const ApartmentNew = ({ createApartment, user }) => {
     bathrooms: "",
     pets: "",
     image: "",
-    user_id: user.id
-  })
-  
+    user_id: user.id,
+  });
+
   const handleChange = (e) => {
-    setNewApartment({...newApartment, [e.target.name]: e.target.value})
-  }
+    setNewApartment({ ...newApartment, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = () => {
-    createApartment(newApartment)
-    navigate("/apartmentindex")
-  }
+    createApartment(newApartment);
+    navigate("/apartmentindex");
+  };
 
   return (
     <>
       <h1>Create a new apartment</h1>
       <Form>
         <FormGroup>
-          <Label for="street">
-            Street
-          </Label>
+          <Label for="street">Street</Label>
           <Input
             name="street"
             onChange={handleChange}
-            placeholder="What is your street?" 
+            placeholder="What is your street?"
             type="text"
           />
         </FormGroup>
         <FormGroup>
-          <Label for="city">
-            City
-          </Label>
+          <Label for="city">City</Label>
           <Input
             name="city"
             onChange={handleChange}
@@ -55,9 +50,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="state">
-            State
-          </Label>
+          <Label for="state">State</Label>
           <Input
             name="state"
             onChange={handleChange}
@@ -66,9 +59,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="manager">
-            Manager
-          </Label>
+          <Label for="manager">Manager</Label>
           <Input
             name="manager"
             onChange={handleChange}
@@ -77,9 +68,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="email">
-            Email
-          </Label>
+          <Label for="email">Email</Label>
           <Input
             name="email"
             onChange={handleChange}
@@ -88,9 +77,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="price">
-            Price
-          </Label>
+          <Label for="price">Price</Label>
           <Input
             name="price"
             onChange={handleChange}
@@ -99,9 +86,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="bedrooms">
-            Bedrooms
-          </Label>
+          <Label for="bedrooms">Bedrooms</Label>
           <Input
             name="bedrooms"
             onChange={handleChange}
@@ -110,9 +95,7 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="bathrooms">
-            Bathrooms
-          </Label>
+          <Label for="bathrooms">Bathrooms</Label>
           <Input
             name="bathrooms"
             onChange={handleChange}
@@ -121,20 +104,16 @@ const ApartmentNew = ({ createApartment, user }) => {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="pets">
-            Pets
-          </Label>
+          <Label for="pets">Pets</Label>
           <Input
             name="pets"
             onChange={handleChange}
-            placeholder="How many pets?"
-            type="number"
+            placeholder="Do you allow pets?"
+            type="text"
           />
         </FormGroup>
         <FormGroup>
-          <Label for="image">
-            Image
-          </Label>
+          <Label for="image">Image</Label>
           <Input
             name="image"
             onChange={handleChange}
@@ -142,12 +121,10 @@ const ApartmentNew = ({ createApartment, user }) => {
             type="url"
           />
         </FormGroup>
-        <Button onClick={handleSubmit}>
-          Submit Apartment
-        </Button>
+        <Button onClick={handleSubmit}>Submit Apartment</Button>
       </Form>
     </>
-  )
-}
+  );
+};
 
-export default ApartmentNew
+export default ApartmentNew;
