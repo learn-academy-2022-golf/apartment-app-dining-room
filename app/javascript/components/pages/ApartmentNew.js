@@ -28,7 +28,9 @@ const ApartmentNew = ({ createApartment, user }) => {
   };
 
   return (
-    <div>
+
+    <div className="form-new">
+
       <h1>Create a new apartment</h1>
       <Form>
         <FormGroup>
