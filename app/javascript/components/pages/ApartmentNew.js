@@ -28,7 +28,7 @@ const ApartmentNew = ({ createApartment, user }) => {
   };
 
   return (
-    <>
+    <div className="form-new">
       <h1>Create a new apartment</h1>
       <Form>
         <FormGroup>
@@ -123,7 +123,7 @@ const ApartmentNew = ({ createApartment, user }) => {
         </FormGroup>
         <Button onClick={handleSubmit}>Submit Apartment</Button>
       </Form>
-    </>
+    </div>
   );
 };
 
