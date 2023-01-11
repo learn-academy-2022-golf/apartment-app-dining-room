@@ -21,6 +21,16 @@ const App = (props) => {
 
   const createApartment = (apartment) => {
     console.log("Created Apartment:", apartment);
+    fetch("http://localhost:3000/apartments", {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then((response) => response.json())
+      .then(() => readApartments())
+      .catch((errors) => console.log("Apartment create errors:", errors))
   };
 
   const readApartments = () => {

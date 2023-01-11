@@ -74,3 +74,5 @@ gem "bootstrap", "~> 5.2"
 
 gem "rspec-rails", "~> 5.1"
 gem "standardrb", "~> 1.0"
+
+gem 'rack-cors', :require => 'rack/cors'
