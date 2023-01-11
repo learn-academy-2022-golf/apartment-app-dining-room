@@ -37,6 +37,11 @@ const ApartmentShow = ({ apartments }) => {
                 Update Apartment! 
               </Button>  
            </NavLink>
+           <NavLink to= "/myapartments/" className="nav-link">
+              <Button>
+                Delete Apartment! 
+              </Button>  
+           </NavLink>
           </CardBody>
         </Card>
       )}
