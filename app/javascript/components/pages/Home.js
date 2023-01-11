@@ -13,22 +13,28 @@ const Home = ({ logged_in, current_user, new_user_route, sign_in_route, sign_out
 
     /* - Conditionally render sign in/sign_out button if there is no user.
        - Render a my_listings and a view_listings when there is a current user signed in.*/
-    <>
-    {logged_in ? <div>
+    <div className="home-main">
+    {logged_in ? <div className='home-card'>
       <h1>Welcome User, to your new Apartment.</h1>
       <p>You can browse for apartments or list your own.</p>
+      <div className="home-buttons">
+
       <NavLink to="/apartmentshow"><Button>My Listings </Button></NavLink>
       <NavLink to="/apartmentindex"><Button>View Listings </Button></NavLink>
+      </div>
       </div>:
-      <div>
+      <div className="home-card">
       <h1>Welcome.</h1>
       <p>You can browse for apartments or sign up for an account to list an apartment.</p>
+       <div className='home-buttons'>
 
-      <a href={sign_in_route}><Button>Sign In </Button></a>
-      <a href={new_user_route}><Button>Sign Up </Button></a>
+          <a href={sign_in_route}><Button variant='secondary'>Sign In </Button></a>
+          <a href={new_user_route}><Button variant='secondary'>Sign Up </Button></a>
+       </div>
+        
       </div>
     } 
-    </>
+    </div>
   )
 }
 
