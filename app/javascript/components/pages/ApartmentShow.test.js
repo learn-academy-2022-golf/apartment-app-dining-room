@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ApartmentShow from "./ApartmentShow";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
+import { MemoryRouter, Routes, Route, BrowserRouter } from "react-router-dom";
+import mockApartments from "../mockApartments";
 
 describe("<ApartmentShow />", () => {
   it("renders without crashing", () => {
@@ -51,5 +52,6 @@ describe("<ApartmentShow />", () => {
       "Location: 4 Privet Drive Little Whinging, Surrey"
     );
     expect(address).toBeInTheDocument();
+    expect(screen.getAllByText("Go Back to All Apartments!")).toBeTruthy()
   });
 });
