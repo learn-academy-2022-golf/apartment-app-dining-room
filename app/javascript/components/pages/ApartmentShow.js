@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Card, CardBody } from "reactstrap";
+import { useParams , NavLink} from "react-router-dom";
+import { Card, CardBody, Button } from "reactstrap";
 
 const ApartmentShow = ({ apartments }) => {
   const { id } = useParams();
@@ -27,6 +27,16 @@ const ApartmentShow = ({ apartments }) => {
             <p>Bedrooms: {currentApartment.bedrooms}</p>
             <p>Manager: {currentApartment.manager}</p>
             <p>Allows Pets: {currentApartment.pets}</p>
+            <NavLink to= "/apartmentindex/" className="nav-link">
+              <Button>
+                Go Back to All Apartments!
+              </Button>  
+              </NavLink>
+           <NavLink to= "/apartmentedit/" className="nav-link">
+              <Button>
+                Update Apartment! 
+              </Button>  
+           </NavLink>
           </CardBody>
         </Card>
       )}
