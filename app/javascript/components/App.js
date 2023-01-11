@@ -47,6 +47,11 @@ const App = (props) => {
     console.log("id:", id);
   };
 
+  const deleteApartment = (id) => {
+  console.log("id:", id);
+  }
+
+
   return (
     <BrowserRouter>
       <Header {...props} />
@@ -58,9 +63,10 @@ const App = (props) => {
           element={<ApartmentIndex apartments={apartments} />}
         />
         <Route
-          path="/myapartments"
+          path="/myapartments/"
           element={
             <ProtectedApartmentIndex
+              deleteApartment={deleteApartment}
               apartments={apartments}
               user={props.current_user}
             />

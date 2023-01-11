@@ -1,10 +1,12 @@
 import React from 'react'
 import { Card, CardBody, Button } from 'reactstrap'
 
-const ProtectedApartmentIndex = ( {apartments, user} ) => {
+const ProtectedApartmentIndex = ( {apartments, user,deleteApartment} ) => {
     console.log(apartments);
     console.log(user);
-
+  const deleteAp = (id) => {
+    deleteApartment(id)
+  }
   return (
     <div>
         {user && apartments?.filter(apartment => apartment.user_id === user.id).map(apartment => {
@@ -22,6 +24,9 @@ const ProtectedApartmentIndex = ( {apartments, user} ) => {
                 <p>Bathrooms; {apartment.bathrooms}</p>
                 <p>Bedrooms; {apartment.bedrooms}</p>
                 <Button>See More Details</Button>
+                <Button onClick={
+                  () => deleteAp(apartment?.id)}  outline color="danger">Delete</Button>
+                 
               </CardBody>
             </Card>
           )
