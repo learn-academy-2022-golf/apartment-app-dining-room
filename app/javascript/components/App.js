@@ -19,9 +19,9 @@ const App = (props) => {
     readApartments()
   }, [])
 
-  const createApartment = (apartment)=>{
-    console.log("Created Apartment:", apartment)
-  }
+  const createApartment = (apartment) => {
+    console.log("Created Apartment:", apartment);
+  };
 
   const readApartments = () => {
     fetch("/apartments")
@@ -32,16 +32,54 @@ const App = (props) => {
       .catch((error) => console.log(error))
   }
 
+  const updateApartment = (apartment, id) => {
+    console.log("Apartment:", apartment);
+    console.log("id:", id);
+  };
+
   return (
     <BrowserRouter>
       <Header {...props} />
       <Routes>
-        <Route exact path="/" element={<Home {...props}/>} />
-        <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
-        <Route path="/myapartments" element={<ProtectedApartmentIndex apartments={apartments} user={props.current_user} /> } />
-        <Route path="/apartmentshow/:id" element={<ApartmentShow apartments={apartments} />} />
-        <Route path="/apartmentnew" element={<ApartmentNew createApartment={createApartment} user={props.current_user}/>} />
-        <Route path="/apartmentedit" element={<ApartmentEdit />} />
+
+        <Route exact path="/" element={<Home {...props} />} />
+        <Route
+          path="/apartmentindex"
+          element={<ApartmentIndex apartments={apartments} />}
+        />
+        <Route
+          path="/myapartments"
+          element={
+            <ProtectedApartmentIndex
+              apartments={apartments}
+              user={props.current_user}
+            />
+          }
+        />
+        <Route
+          path="/apartmentshow/:id"
+          element={<ApartmentShow apartments={apartments} />}
+        />
+        <Route
+          path="/apartmentnew"
+          element={
+            <ApartmentNew
+              createApartment={createApartment}
+              user={props.current_user}
+            />
+          }
+        />
+
+        <Route
+          path="/apartmentedit/:id"
+          element={
+            <ApartmentEdit
+              apartments={apartments}
+              updateApartment={updateApartment}
+              user={props.current_user}
+            />
+          }
+        />
         <Route element={<NotFound />} />
       </Routes>
       <Footer />
