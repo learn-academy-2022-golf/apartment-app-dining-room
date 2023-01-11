@@ -32,7 +32,7 @@ const ApartmentShow = ({ apartments }) => {
                 Go Back to All Apartments!
               </Button>  
               </NavLink>
-           <NavLink to= "/apartmentedit/" className="nav-link">
+           <NavLink to= {`/apartmentedit/${currentApartment.id}`} className="nav-link">
               <Button>
                 Update Apartment! 
               </Button>  
