@@ -11,12 +11,13 @@ const ApartmentShow = ({ apartments }) => {
   return (
     <div>
       {currentApartment && (
-        <Card
+        <div className="show-background">
+        <Card 
           style={{
             width: "14rem",
           }}
-        >
-          <img alt={`apartment`} src={currentApartment.image} />
+        className="show-card">
+          <img alt={`apartment`} src={currentApartment.image}/>
           <CardBody>
             <p>Price: ${currentApartment.price}</p>
             <p>
@@ -27,6 +28,7 @@ const ApartmentShow = ({ apartments }) => {
             <p>Bedrooms: {currentApartment.bedrooms}</p>
             <p>Manager: {currentApartment.manager}</p>
             <p>Allows Pets: {currentApartment.pets}</p>
+            <div className="show-buttons">
             <NavLink to= "/apartmentindex/" className="nav-link">
               <Button>
                 Go Back to All Apartments!
@@ -42,8 +44,10 @@ const ApartmentShow = ({ apartments }) => {
                 Delete Apartment! 
               </Button>  
            </NavLink>
+           </div>
           </CardBody>
         </Card>
+        </div>
       )}
     </div>
   );
