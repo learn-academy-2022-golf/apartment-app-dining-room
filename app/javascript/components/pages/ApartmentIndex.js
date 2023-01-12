@@ -6,7 +6,7 @@ import ApartmentShow from "./ApartmentShow"
 const ApartmentIndex = ({apartments}) => {
 
   return (
-    <div>
+  <div className="card-index">
     {apartments?.map((apartment, index) => {
       return (
         <Card
