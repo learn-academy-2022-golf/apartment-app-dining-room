@@ -34,7 +34,7 @@ const ApartmentEdit = ({ apartments, updateApartment, user }) => {
   };
 
   return (
-    <div>
+    <div className="apartment-edit">
       <h1>Edit Apartment</h1>
       <Form>
         <FormGroup>
