@@ -87,6 +87,22 @@
     background-color: red
 }
 
+
+.navigation-container {
+    background: #2D2726;
+}
+
+.navigation-nav-link {
+    font-family: 'Inter';
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 24px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: right;
+
 .card-index {
   display: grid;
   grid-template-columns:repeat(3, 1fr);
@@ -99,4 +115,5 @@
                  width:300 px; 
                  object-fit: cover;
                  padding:10px; 
+
 }
