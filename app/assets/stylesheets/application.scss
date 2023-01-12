@@ -7,10 +7,17 @@
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.show-card {
+    color: #2dc5f4;
+    background: rgba(75, 64, 62, 0.9);
+    border-radius: 30px;
     padding: 1rem;
     text-align: center;
 }
@@ -21,6 +28,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 3rem;
+    min-height: 400px;
+    min-width: 650px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.show-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.show-background {
+    background-color: #2dc5f4;
     padding: 4rem;
     min-height: 400px;
     min-width: 650px;
@@ -66,3 +87,4 @@
     padding: 1rem;
     background-color: red
 }
+
